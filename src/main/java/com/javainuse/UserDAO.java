@@ -1,14 +1,16 @@
 package com.javainuse;
 
-import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
 
+//@Repository
 public class UserDAO {
 
 	private static final Map<Long,User> USERS = new HashMap<>();

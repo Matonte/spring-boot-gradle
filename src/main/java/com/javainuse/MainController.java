@@ -9,47 +9,47 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import com.javainuse.BankAccountApplication;
+import com.javainuse.User;
+import com.javainuse.UserDAO;
+import com.javainuse.UserForm;
 
-//import com.capgemini.spring.service.BankAccountApplication;
-//import com.capgemini.spring.service.User;
-//import com.capgemini.spring.service.UserDAO;
-//import com.capgemini.spring.service.UserForm;
-
-
+@RestController
 public class MainController {
 	@Autowired
-	private UserDAO userDAO;
+// UserDAO userDAO;
 	
-	@RequestMapping("/")
-	public String viewHome(Model model) {
+	@RequestMapping("/welcome")
+	public String viewHome() {
 		return "welcomeHome";
 	}
 	
 	@RequestMapping("/users")
-	public String viewUsers(Model model) {
+	public String viewUsers() {
 		List<User> list = UserDAO.getUsers();
 		
-		model.addAttribute("users", list);
+		//model.addAttribute("users", list);
 		
 		return "usersPage";
 	}
 	
 	@RequestMapping("/registerSuccessful")
-	public String viewRegisterSuccessful(Model model) {
+	public String viewRegisterSuccessful() {
 		return "registerSuccessfulPage";
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String viewRegister(Model model) {
+	public String viewRegister() {
 		UserForm form = new UserForm();
 
-	    model.addAttribute("userForm", form);
+	    //model.addAttribute("userForm", form);
 	    
 	    return "registerPage";
 	}
 	
-	public String saveRegister(Model model, //
+	public String saveRegister( //
 	         @ModelAttribute("userForm") @Validated UserForm userForm, //
 	         BindingResult result, //
 	         final RedirectAttributes redirectAttributes) {
@@ -60,11 +60,11 @@ public class MainController {
 	      }
 	      User newUser= null;
 	      try {
-	         newUser = userDAO.createUser(userForm);
+	      //   newUser = userDAO.createUser(userForm);
 	      }
 	      // Other error!!
 	      catch (Exception e) {
-	         model.addAttribute("errorMessage", "Error: " + e.getMessage());
+	        // model.addAttribute("errorMessage", "Error: " + e.getMessage());
 	         return "registerPage";
 	      }
 	 
