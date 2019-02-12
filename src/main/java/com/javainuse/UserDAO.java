@@ -10,7 +10,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-//@Repository
+@Repository
 public class UserDAO {
 
 	private static final Map<Long,User> USERS = new HashMap<>();
